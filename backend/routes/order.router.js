@@ -83,6 +83,54 @@ const router = Router();
  *       201:
  *         description: Order created successfully
  */
+/**
+ * @swagger
+ * /order/{id}:
+ *   get:
+ *     summary: Get order by ID
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Order details
+ *   put:
+ *     summary: Update an order
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Order updated
+ *   delete:
+ *     summary: Delete an order
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Order deleted
+ */
 router.get("/", listOrders);
 router.get("/:id", getOrderById);
 router.post("/", createOrder);
