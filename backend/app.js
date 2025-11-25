@@ -28,6 +28,12 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Welcome to the API");
 });
+
+// Serve Swagger JSON
+app.get("/api-docs.json", (req, res) => {
+  res.json(specs);
+});
+
 app.use("/api", indexRouter);
 app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
