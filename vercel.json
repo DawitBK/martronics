@@ -1,34 +1,13 @@
 {
-    "version": 2,
-    "builds": [
+    "public": true,
+    "rewrites": [
         {
-            "src": "backend/app.js",
-            "use": "@vercel/node"
+            "source": "/",
+            "destination": "/swagger-standalone.html"
         },
         {
-            "src": "frontend/package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api-docs/(.*)",
-            "dest": "/backend/app.js"
-        },
-        {
-            "src": "/api-docs",
-            "dest": "/backend/app.js"
-        },
-        {
-            "src": "/api/(.*)",
-            "dest": "/backend/app.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/$1"
+            "source": "/api-docs",
+            "destination": "/swagger-standalone.html"
         }
     ]
 }
