@@ -1,0 +1,73 @@
+﻿
+> martronics_front@0.0.0 lint
+> eslint .
+
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\components\categories\CategoryList.jsx
+  9:6  warning  React Hook useEffect has a missing dependency: 'getCategories'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\components\products\ProductList.jsx
+  10:6  warning  React Hook useEffect has a missing dependency: 'getProducts'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\components\subcategories\AddSubCategoryForm.jsx
+  16:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  14 |
+  15 |   useEffect(() => {
+> 16 |     loadCategories();
+     |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |   }, []);
+  18 |
+  19 |   const handleSubmit = async (e) => {  react-hooks/set-state-in-effect
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\components\subcategories\EditSubCategoryForm.jsx
+  16:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  14 |
+  15 |   useEffect(() => {
+> 16 |     loadCategories();
+     |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |   }, []);
+  18 |
+  19 |   const handleSubmit = async (e) => {  react-hooks/set-state-in-effect
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\pages\CategoriesPage.jsx
+  109:6  warning  React Hook useEffect has missing dependencies: 'fetchCategories' and 'fetchSubCategories'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\pages\SubCategories.jsx
+  116:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  114 |
+  115 |   useEffect(() => {
+> 116 |     loadSubCategories();
+      |     ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  117 |   }, []);
+  118 |
+  119 |   const handleDelete = async (id) => {  react-hooks/set-state-in-effect
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\stores\authStore.js
+  214:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\dawit\OneDrive\Desktop\martronics_front - Copy\martronics_front\src\stores\cartStore.js
+  89:11  error  'order' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 8 problems (5 errors, 3 warnings)
+
