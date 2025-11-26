@@ -30,6 +30,86 @@ const options = {
                     bearerFormat: 'JWT',
                 },
             },
+            schemas: {
+                User: {
+                    type: 'object',
+                    required: ['firstName', 'lastName', 'email', 'password'],
+                    properties: {
+                        id: { type: 'integer' },
+                        firstName: { type: 'string' },
+                        lastName: { type: 'string' },
+                        username: { type: 'string' },
+                        email: { type: 'string', format: 'email' },
+                        password: { type: 'string', format: 'password' },
+                        role: { type: 'string', enum: ['user', 'admin', 'manager'], default: 'user' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                Category: {
+                    type: 'object',
+                    required: ['name'],
+                    properties: {
+                        id: { type: 'integer' },
+                        name: { type: 'string' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                SubCategory: {
+                    type: 'object',
+                    required: ['name', 'category_id'],
+                    properties: {
+                        id: { type: 'integer' },
+                        name: { type: 'string' },
+                        category_id: { type: 'integer' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                Product: {
+                    type: 'object',
+                    required: ['name', 'price', 'stock', 'category_id', 'sub_category_id'],
+                    properties: {
+                        id: { type: 'integer' },
+                        name: { type: 'string' },
+                        description: { type: 'string' },
+                        price: { type: 'number' },
+                        stock: { type: 'integer' },
+                        category_id: { type: 'integer' },
+                        sub_category_id: { type: 'integer' },
+                        user_id: { type: 'integer' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                Order: {
+                    type: 'object',
+                    properties: {
+                        id: { type: 'integer' },
+                        user_id: { type: 'integer' },
+                        status: { type: 'string', enum: ['pending', 'completed', 'cancelled'], default: 'pending' },
+                        total: { type: 'number' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                Cart: {
+                    type: 'object',
+                    properties: {
+                        id: { type: 'integer' },
+                        user_id: { type: 'integer' },
+                        createdAt: { type: 'string', format: 'date-time' },
+                        updatedAt: { type: 'string', format: 'date-time' },
+                    },
+                },
+                Error: {
+                    type: 'object',
+                    properties: {
+                        message: { type: 'string' },
+                    },
+                },
+            },
         },
         security: [
             {

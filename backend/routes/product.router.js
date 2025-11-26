@@ -31,6 +31,12 @@ const router = Router();
  *     responses:
  *       200:
  *         description: List of products
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
  *   post:
  *     summary: Create a new product
  *     tags: [Products]
@@ -41,20 +47,21 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               price:
- *                 type: number
- *               stock:
- *                 type: integer
+ *             $ref: '#/components/schemas/Product'
  *     responses:
  *       201:
  *         description: Product created successfully
- */
-/**
- * @swagger
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       400:
+ *         description: Invalid input
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ * 
  * /product/{id}:
  *   get:
  *     summary: Get product by ID
@@ -68,6 +75,16 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Product details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Product not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   put:
  *     summary: Update a product
  *     tags: [Products]
@@ -83,17 +100,20 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               price:
- *                 type: number
- *               stock:
- *                 type: integer
+ *             $ref: '#/components/schemas/Product'
  *     responses:
  *       200:
  *         description: Product updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Product not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   delete:
  *     summary: Delete a product
  *     tags: [Products]
@@ -108,6 +128,19 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Product deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       404:
+ *         description: Product not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get("/", listProducts); // List all products
 router.get("/:id", getProductById); // Get product details

@@ -27,6 +27,12 @@ const router = Router();
  *     responses:
  *       200:
  *         description: List of subcategories
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/SubCategory'
  *   post:
  *     summary: Create a new subcategory
  *     tags: [SubCategories]
@@ -37,22 +43,21 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required:
- *               - name
- *               - category_id
- *             properties:
- *               name:
- *                 type: string
- *               category_id:
- *                 type: integer
+ *             $ref: '#/components/schemas/SubCategory'
  *     responses:
  *       201:
  *         description: SubCategory created
- */
-
-/**
- * @swagger
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SubCategory'
+ *       400:
+ *         description: Invalid input
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ * 
  * /subcategory/{id}:
  *   get:
  *     summary: Get subcategory by ID
@@ -66,6 +71,16 @@ const router = Router();
  *     responses:
  *       200:
  *         description: SubCategory details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SubCategory'
+ *       404:
+ *         description: SubCategory not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   put:
  *     summary: Update a subcategory
  *     tags: [SubCategories]
@@ -81,15 +96,20 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               category_id:
- *                 type: integer
+ *             $ref: '#/components/schemas/SubCategory'
  *     responses:
  *       200:
  *         description: SubCategory updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SubCategory'
+ *       404:
+ *         description: SubCategory not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   delete:
  *     summary: Delete a subcategory
  *     tags: [SubCategories]
@@ -104,6 +124,19 @@ const router = Router();
  *     responses:
  *       200:
  *         description: SubCategory deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       404:
+ *         description: SubCategory not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 
 

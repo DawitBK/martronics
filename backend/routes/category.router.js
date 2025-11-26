@@ -27,6 +27,12 @@ const router = Router();
  *     responses:
  *       200:
  *         description: List of categories
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Category'
  *   post:
  *     summary: Create a new category
  *     tags: [Categories]
@@ -37,19 +43,21 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required:
- *               - name
- *             properties:
- *               name:
- *                 type: string
+ *             $ref: '#/components/schemas/Category'
  *     responses:
  *       201:
  *         description: Category created
- */
-
-/**
- * @swagger
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Category'
+ *       400:
+ *         description: Invalid input
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ * 
  * /category/{id}:
  *   get:
  *     summary: Get category by ID
@@ -63,6 +71,16 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Category details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Category'
+ *       404:
+ *         description: Category not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   put:
  *     summary: Update a category
  *     tags: [Categories]
@@ -78,13 +96,20 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
+ *             $ref: '#/components/schemas/Category'
  *     responses:
  *       200:
  *         description: Category updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Category'
+ *       404:
+ *         description: Category not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *   delete:
  *     summary: Delete a category
  *     tags: [Categories]
@@ -99,6 +124,19 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Category deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       404:
+ *         description: Category not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 
 
