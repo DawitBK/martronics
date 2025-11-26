@@ -8,7 +8,14 @@ import swaggerUi from "swagger-ui-express";
 import specs from "./swagger.js";
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://martronics-app.vercel.app" // Add your Vercel frontend domain here
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Swagger Documentation
