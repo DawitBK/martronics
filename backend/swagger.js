@@ -18,7 +18,7 @@ const options = {
                 description: 'Development server',
             },
             {
-                url: 'https://martronics-app.vercel.app/api',
+                url: 'https://web-production-cfbdd.up.railway.app/api',
                 description: 'Production server',
             },
         ],
