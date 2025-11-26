@@ -1,19 +1,5 @@
 {
-<<<<<<< HEAD
     "buildCommand": "cd frontend && npm install && npm run build",
     "outputDirectory": "frontend/dist",
     "installCommand": "cd frontend && npm install"
-=======
-    "public": true,
-    "rewrites": [
-        {
-            "source": "/",
-            "destination": "/swagger-standalone.html"
-        },
-        {
-            "source": "/api-docs",
-            "destination": "/swagger-standalone.html"
-        }
-    ]
->>>>>>> a47683b5eebe2c85b9c777326f8bcbc6520bba62
 }
