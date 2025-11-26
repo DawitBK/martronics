@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuthStore from "../stores/authStore";
 
 // Use environment variable for API URL, fallback to localhost
-const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const VITE_API_URL = import.meta.env.VITE_API_URL || "https://web-production-cfbdd.up.railway.app/api";
 
 const api = axios.create({
   baseURL: VITE_API_URL,
