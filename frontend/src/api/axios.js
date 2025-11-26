@@ -1,9 +1,12 @@
-// src/api/axios.js
 import axios from "axios";
 import useAuthStore from "../stores/authStore";
 
+// Use environment variable for API URL, fallback to localhost
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+
 const api = axios.create({
-  baseURL: "http://localhost:3000/api", // adjust to your backend URL
+  baseURL: API_URL,
+  withCredentials: true,
 });
 
 // Request interceptor to add access token
@@ -33,12 +36,13 @@ api.interceptors.response.use(
       try {
         // Call your backend refresh endpoint
         const res = await axios.post(
-          "http://localhost:3000/api/user/refresh",
+          `${API_URL}/user/refresh`,
           {},
           {
             headers: {
               Authorization: `Bearer ${authStore.refreshToken}`,
             },
+            withCredentials: true,
           }
         );
 
