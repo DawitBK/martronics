@@ -5,7 +5,7 @@ const { User, Product } = models;
 
 export const createUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, role } = req.body;
     const hashedPassword = await argon2.hash(password);
     console.log(hashedPassword);
 
@@ -13,7 +13,8 @@ export const createUser = async (req, res) => {
       firstName,
       lastName,
       email,
-      password: hashedPassword, // TODO: hash this
+      password: hashedPassword,
+      role: role || 'user',
     });
 
     res.status(201).json(created);
