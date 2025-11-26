@@ -1,5 +1,5 @@
 import express from "express";
-import sequelize from "./config/db.js";
+import { sequelize } from "./models/index.js";
 import errorHandler from "./middleware/errorHandler.js";
 // const PORT = process.env.PORT || 3000;
 import indexRouter from "./routes/index.router.js";
@@ -12,8 +12,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://martronics.vercel.app",
-    "https://web-production-cfbdd.up.railway.app/api" // Add your Vercel frontend domain here
+    "https://martronics.vercel.app"
   ],
   credentials: true
 }));
