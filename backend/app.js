@@ -12,7 +12,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://martronics-app.vercel.app" // Add your Vercel frontend domain here
+    "https://martronics.vercel.app" // Add your Vercel frontend domain here
   ],
   credentials: true
 }));
