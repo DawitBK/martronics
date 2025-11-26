@@ -14,12 +14,12 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/api',
-                description: 'Development server',
-            },
-            {
                 url: 'https://web-production-cfbdd.up.railway.app/api',
                 description: 'Production server',
+            },
+            {
+                url: 'http://localhost:3000/api',
+                description: 'Development server',
             },
         ],
         components: {
