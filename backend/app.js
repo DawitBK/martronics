@@ -13,7 +13,7 @@ app.use(cors({
     "http://localhost:5173",
     "http://localhost:3000",
     "https://martronics.vercel.app",
-    "https://web-production-cfbdd.up.railway.app/api" // Add your Vercel frontend domain here
+    "https://web-production-cfbdd.up.railway.app" // Add your Vercel frontend domain here
   ],
   credentials: true
 }));
