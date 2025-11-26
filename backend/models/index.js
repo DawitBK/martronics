@@ -17,32 +17,42 @@ import Order from "./order.js";
 import OrderItem from "./orderitem.js";
 import Payment from "./payment.js";
 
-// Ensure required env variables exist
-const requiredVars = [
-  "DB_NAME",
-  "DB_USER",
-  "DB_PASSWORD",
-  "DB_HOST",
-  "DB_PORT",
-];
-for (const v of requiredVars) {
-  if (!process.env[v]) {
-    throw new Error(`Missing environment variable: ${v}`);
-  }
-}
+// Initialize Sequelize - support both DATABASE_URL (production) and individual vars (local)
+let sequelize;
 
-// Initialize Sequelize using separate env vars
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+if (process.env.DATABASE_URL) {
+  // Production: use DATABASE_URL with SSL
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
     logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  });
+} else {
+  // Local development: use individual env vars
+  const requiredVars = ["DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT"];
+  for (const v of requiredVars) {
+    if (!process.env[v]) {
+      throw new Error(`Missing environment variable: ${v} (or set DATABASE_URL for production)`);
+    }
   }
-);
+
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      dialect: "postgres",
+      logging: false,
+    }
+  );
+}
 
 // Initialize models
 const models = {
