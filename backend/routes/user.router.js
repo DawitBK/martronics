@@ -44,47 +44,5 @@ const router = Router();
  *   post:
  *     summary: Register a new user
  *     tags: [Users]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               firstName:
- *                 type: string
- *               lastName:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       201:
- *         description: User created successfully
- * /user/login:
- *   post:
- *     summary: Login user
- *     tags: [Users]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       200:
- *         description: Login successful
- */
-router.post("/", createUser); // Register
-router.post("/login", Login);
-router.get("/", requireRole(["admin"]), listUsers);
-router.put("/:id", requireAuth, updateUser);
-router.post("/refresh", RefreshToken);
 
 export default router;
