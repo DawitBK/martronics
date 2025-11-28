@@ -1,4 +1,3 @@
-
 import swaggerJsdoc from 'swagger-jsdoc';
 
 const options = {
@@ -41,11 +40,19 @@ const options = {
                         username: { type: 'string' },
                         email: { type: 'string', format: 'email' },
                         password: { type: 'string', format: 'password' },
-                        role: { type: 'string', enum: ['user', 'admin', 'manager'], default: 'user' },
+
+                        // ✅ FIXED ROLE ENUM + DEFAULT
+                        role: {
+                            type: 'string',
+                            enum: ['customer', 'admin', 'manager'],
+                            default: 'customer'
+                        },
+
                         createdAt: { type: 'string', format: 'date-time' },
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 Category: {
                     type: 'object',
                     required: ['name'],
@@ -56,6 +63,7 @@ const options = {
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 SubCategory: {
                     type: 'object',
                     required: ['name', 'category_id'],
@@ -67,6 +75,7 @@ const options = {
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 Product: {
                     type: 'object',
                     required: ['name', 'price', 'stock', 'category_id', 'sub_category_id'],
@@ -83,6 +92,7 @@ const options = {
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 Order: {
                     type: 'object',
                     properties: {
@@ -94,6 +104,7 @@ const options = {
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 Cart: {
                     type: 'object',
                     properties: {
@@ -103,6 +114,7 @@ const options = {
                         updatedAt: { type: 'string', format: 'date-time' },
                     },
                 },
+
                 Error: {
                     type: 'object',
                     properties: {
@@ -117,9 +129,8 @@ const options = {
             },
         ],
     },
-    apis: ['./routes/*.js'], // Path to the API docs
+    apis: ['./routes/*.js'],
 };
 
 const specs = swaggerJsdoc(options);
-
 export default specs;
