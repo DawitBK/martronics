@@ -14,7 +14,7 @@ export const createUser = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
-      role: role || 'user',
+      role: role || 'customer',
     });
 
     res.status(201).json(created);
