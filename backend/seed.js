@@ -115,7 +115,7 @@ const seed = async () => {
         category_id: electronics.id,
         sub_category_id: smartphones.id,
         image:
-          "https://images.unsplash.com/photo-1706716364028-3e4b7a050523?auto=format&fit=crop&q=80&w=800",
+          "https://m.media-amazon.com/images/I/71iBKcLHXFL._AC_SL1500_.jpg",
       },
       {
         name: "Google Pixel 8 Pro",
@@ -148,7 +148,7 @@ const seed = async () => {
         category_id: electronics.id,
         sub_category_id: smartphones.id,
         image:
-          "https://images.unsplash.com/photo-1592286927505-b0c2fc1f4f1e?auto=format&fit=crop&q=80&w=800",
+          "https://www.vopmart.com/media/magefan_blog/20231027113942.jpg",
       },
       {
         name: "iPhone 13",
@@ -194,7 +194,7 @@ const seed = async () => {
         category_id: electronics.id,
         sub_category_id: laptops.id,
         image:
-          "https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&q=80&w=800",
+          "https://external-preview.redd.it/apple-macbook-pro-16-2023-m3-max-review-m3-max-challenges-v0-B9io9CbQtnqF17yeX0-PKuhmBuLmod21auH-JqVfvvI.jpg?auto=webp&s=ba18b798b825a0aab1a5642a5221e7d1961975a5",
       },
       {
         name: "MacBook Air M3",
@@ -349,7 +349,7 @@ const seed = async () => {
         category_id: electronics.id,
         sub_category_id: phoneAccessories.id,
         image:
-          "https://images.unsplash.com/photo-1591290619762-d27b95c5c9c3?auto=format&fit=crop&q=80&w=800",
+          "https://www.belkin.com/dw/image/v2/BGBH_PRD/on/demandware.static/-/Sites-master-product-catalog-blk/default/dwb3101a8b/images/hi-res/7/135cfdc88f5c66a4_WIZ009-BLK_Hero_WDevice_WEB.jpg?sfrm=png",
       },
       {
         name: "PopSockets PopGrip",
@@ -403,7 +403,7 @@ const seed = async () => {
         category_id: electronics.id,
         sub_category_id: phoneAccessories.id,
         image:
-          "https://images.unsplash.com/photo-1591290619762-d27b95c5c9c3?auto=format&fit=crop&q=80&w=800",
+          "https://cdn11.bigcommerce.com/s-uv4dd6xvbk/images/stencil/original/products/316/1476/snap-plus_charger_hero__66732.1685991425.jpg?c=1",
       },
 
       // MEN'S CLOTHING (10 products)
@@ -734,7 +734,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1515965885361-f1e0095517ea?auto=format&fit=crop&q=80&w=800",
+          "https://m.media-amazon.com/images/I/71gUBJqrJ5L._AC_UF1000,1000_QL80_.jpg",
       },
       {
         name: "Coloring Book",
@@ -744,7 +744,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800",
+          "https://m.media-amazon.com/images/I/71imzfqxcJL._AC_UF1000,1000_QL80_.jpg",
       },
       {
         name: "Washable Marker Set",
@@ -764,7 +764,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1596464716127-f9a829be9374?auto=format&fit=crop&q=80&w=800",
+          "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8658519/8658519_o51_et_8535123/8658519",
       },
       {
         name: "Glue Stick (3-pack)",
@@ -774,7 +774,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1626202378367-27f9270a24a7?auto=format&fit=crop&q=80&w=800",
+          "https://diy.bostik.com/sites/default/files/styles/square_crop/public/2023-10/Bostik-DIY-New_Zealand-Stationery-Craft-amos-gluesticks-600x600.jpg?itok=ALSGWdXZ",
       },
       {
         name: "Finger Paint Set",
@@ -784,7 +784,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1502623374737-25f381759020?auto=format&fit=crop&q=80&w=800",
+          "https://images-cdn.ubuy.co.in/66818df1c592755f36472be4-kids-washable-finger-paint-12-colors.jpg",
       },
       {
         name: "Sticker Pack",
@@ -794,7 +794,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationaryKids.id,
         image:
-          "https://images.unsplash.com/photo-1572375992501-4f0f235addaa?auto=format&fit=crop&q=80&w=800",
+          "https://www.officesupplies.lk/wp-content/uploads/2022/01/H7d1fd1dc29234de393f385d4db580ecfZ.png",
       },
       {
         name: "Modeling Clay",
@@ -846,7 +846,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationarySchool.id,
         image:
-          "https://images.unsplash.com/photo-1588012896079-c841c305a87f?auto=format&fit=crop&q=80&w=800",
+          "https://shopcmss.com/cdn/shop/products/8416.jpg?v=1582250578",
       },
       {
         name: "Notebook (100 pages)",
@@ -866,7 +866,7 @@ const seed = async () => {
         category_id: stationary.id,
         sub_category_id: stationarySchool.id,
         image:
-          "https://images.unsplash.com/photo-1585241645928-1b7319137706?auto=format&fit=crop&q=80&w=800",
+          "https://rukminim2.flixcart.com/image/480/640/xif0q/pencil-box/j/u/c/imported-pencil-box-14-1-poksi-original-imagzt5dg2yrhgzy.jpeg?q=90",
       },
       {
         name: "Set Square & Ruler",

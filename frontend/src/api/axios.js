@@ -5,7 +5,7 @@ import useAuthStore from "../stores/authStore";
 const VITE_API_URL = import.meta.env.VITE_API_URL || "https://web-production-cfbdd.up.railway.app/api";
 
 const api = axios.create({
-  baseURL: VITE_API_URL,
+  baseURL: "http://localhost:3000/api" || VITE_API_URL,
   withCredentials: true,
 });
 

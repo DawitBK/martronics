@@ -1,0 +1,69 @@
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+build/
+*/dist/
+*/build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Backend specific
+backend/.env
+backend/node_modules/
+backend/dist/
+backend/error.log
+backend/error-output.txt
+
+# Frontend specific
+frontend/.env
+frontend/.env.local
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Misc
+.cache/
+.parcel-cache/

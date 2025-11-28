@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/layout/Navbar.jsx";
+import Footer from "./components/layout/Footer.jsx";
 import ProtectedRoute from "./components/layout/ProtectedRoute.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 };
