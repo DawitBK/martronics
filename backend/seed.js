@@ -5,7 +5,7 @@ const { User, Category, SubCategory, Product, ProductImage } = models;
 
 const seed = async () => {
   try {
-    await sequelize.sync({ force: true }); // Reset database
+    await sequelize.sync({}); // Reset database
     console.log("Database synced!");
 
     // 1. Create Admin User
