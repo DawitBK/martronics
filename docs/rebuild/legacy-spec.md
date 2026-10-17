@@ -6,19 +6,19 @@ What the original (`legacy-v1`) backend does, written down so the rebuild can re
 
 All routes are mounted under `/api`. Auth column: **none** means the route has no middleware at all.
 
-| Method and path | Auth | Behaviour |
-|---|---|---|
-| `POST /user` | none | create user; `role` is taken from the request body (default `customer`) |
-| `POST /user/login` | none | email + password; returns `accessToken` (1 h) and `refreshToken` (7 d); wrong email and wrong password both answer 404 with different messages |
-| `POST /user/refresh` | refresh token as bearer | returns a new token pair (`access_token`, `refresh_token`) |
-| `GET /user` | admin | all users with their products |
-| `PUT /user/:id` | any signed-in user | updates `firstName`, `lastName` of **any** user id |
-| `GET /product`, `GET /product/:id`, `GET /product/:id/images` | none | list, detail, images |
-| `POST/PUT/DELETE /product[/:id]`, `POST /product/:id/images` | admin, manager | catalog management |
-| `GET/POST/PUT/DELETE /category`, `/subcategory` | reads none; writes admin, manager | two-level taxonomy; sub-category names are globally unique |
-| `GET /cart`, `GET /cart/user/:userId`, `POST /cart`, `DELETE /cart/:id`, `GET/POST /cart/items`, `PUT/DELETE /cart/items/:id` | none | one cart per user; items hold `product_id` and `quantity` |
-| `GET/POST/PUT/DELETE /order[/:id]`, `POST /order/items`, `PUT/DELETE /order/items/:id` | none | see "Order creation" |
-| `GET/POST /payment` | none | a payment row per order: `amount`, `method`, `status` |
+| Method and path                                                                                                               | Auth                              | Behaviour                                                                                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /user`                                                                                                                  | none                              | create user; `role` is taken from the request body (default `customer`)                                                                        |
+| `POST /user/login`                                                                                                            | none                              | email + password; returns `accessToken` (1 h) and `refreshToken` (7 d); wrong email and wrong password both answer 404 with different messages |
+| `POST /user/refresh`                                                                                                          | refresh token as bearer           | returns a new token pair (`access_token`, `refresh_token`)                                                                                     |
+| `GET /user`                                                                                                                   | admin                             | all users with their products                                                                                                                  |
+| `PUT /user/:id`                                                                                                               | any signed-in user                | updates `firstName`, `lastName` of **any** user id                                                                                             |
+| `GET /product`, `GET /product/:id`, `GET /product/:id/images`                                                                 | none                              | list, detail, images                                                                                                                           |
+| `POST/PUT/DELETE /product[/:id]`, `POST /product/:id/images`                                                                  | admin, manager                    | catalog management                                                                                                                             |
+| `GET/POST/PUT/DELETE /category`, `/subcategory`                                                                               | reads none; writes admin, manager | two-level taxonomy; sub-category names are globally unique                                                                                     |
+| `GET /cart`, `GET /cart/user/:userId`, `POST /cart`, `DELETE /cart/:id`, `GET/POST /cart/items`, `PUT/DELETE /cart/items/:id` | none                              | one cart per user; items hold `product_id` and `quantity`                                                                                      |
+| `GET/POST/PUT/DELETE /order[/:id]`, `POST /order/items`, `PUT/DELETE /order/items/:id`                                        | none                              | see "Order creation"                                                                                                                           |
+| `GET/POST /payment`                                                                                                           | none                              | a payment row per order: `amount`, `method`, `status`                                                                                          |
 
 ## Data model (10 tables)
 

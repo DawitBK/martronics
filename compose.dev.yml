@@ -1,0 +1,19 @@
+# Local PostgreSQL 18 for development and integration tests.
+#   pnpm db:up
+#   export DATABASE_URL=postgres://martronics:martronics@localhost:5432/martronics
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: martronics
+      POSTGRES_PASSWORD: martronics
+      POSTGRES_DB: martronics
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U martronics -d martronics']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    tmpfs:
+      - /var/lib/postgresql
