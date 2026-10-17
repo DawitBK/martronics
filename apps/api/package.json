@@ -13,7 +13,8 @@
     "test": "vitest run --config vitest.config.ts",
     "test:integration": "vitest run --config vitest.integration.config.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "node dist/db/migrate.js"
+    "db:migrate": "node dist/db/migrate.js",
+    "admin:bootstrap": "node dist/bootstrap-admin.js"
   },
   "dependencies": {
     "@martronics/kit": "workspace:*",

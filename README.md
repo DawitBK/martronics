@@ -3,7 +3,7 @@
 An e-commerce platform: catalog, cart, orders and payments, rebuilt on a modern stack as a
 reference implementation of an enterprise-grade service.
 
-> **Status:** the `next` branch holds the rebuild (API first; the storefront follows). `main` still
+> **Status:** the `next` branch holds the rebuild (API and storefront). `main` still
 > holds the original application, tagged `legacy-v1`. The legacy code lives in [`legacy/`](legacy/)
 > on this branch until the rebuild reaches parity, and the old API's behaviour and defects are
 > written down in [docs/rebuild/legacy-spec.md](docs/rebuild/legacy-spec.md).
@@ -54,6 +54,7 @@ matrix, the checkout and payment flows, an oversell race and idempotent retries.
 
 ```
 apps/api/        the HTTP API (NestJS)
+apps/web/        the storefront and admin (Next.js; ADR 0005)
 packages/kit/    shared building blocks: env, logging, problem+json, pagination, health, OpenAPI
 packages/config/ shared TypeScript and ESLint presets
 docs/            ADRs, the enterprise-bar scorecard, the legacy recovery spec

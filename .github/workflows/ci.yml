@@ -66,6 +66,9 @@ jobs:
       - name: Integration tests (PostgreSQL 18)
         run: pnpm test:integration
 
+      - name: End-to-end smoke test (API + storefront + PostgreSQL 18)
+        run: DATABASE_URL=postgres://martronics:martronics@localhost:5432/martronics_smoke pnpm smoke
+
   secrets:
     name: Secret scan (gitleaks)
     runs-on: ubuntu-latest

@@ -5,3 +5,5 @@ coverage
 LICENSE
 legacy
 apps/api/drizzle
+.next
+next-env.d.ts

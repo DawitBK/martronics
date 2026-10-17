@@ -33,6 +33,7 @@ const newRefreshToken = () => randomBytes(32).toString('base64url');
 
 // argon2id with the OWASP-recommended minimum cost (19 MiB, 2 passes, 1 lane).
 const ARGON2 = { type: argon2.argon2id, memoryCost: 19456, timeCost: 2, parallelism: 1 } as const;
+export const hashPassword = (password: string): Promise<string> => argon2.hash(password, ARGON2);
 // A hash of a throwaway value: verified when the email is unknown so both failures cost the same.
 const DUMMY_HASH = await argon2.hash(randomUUID(), ARGON2);
 
