@@ -1,6 +1,14 @@
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import { Inject, Injectable } from '@nestjs/common';
-import { conflict, notFound, ProblemException, toPage } from '@martronics/kit';
+import {
+  conflict,
+  FailureLimiter,
+  LockedOutError,
+  notFound,
+  ProblemException,
+  tooManyRequests,
+  toPage,
+} from '@martronics/kit';
 import argon2 from 'argon2';
 import { and, asc, count, eq, ilike, isNull, or, sql, type SQL } from 'drizzle-orm';
 import { recordAudit } from '../common/audit.js';
@@ -33,6 +41,32 @@ const newRefreshToken = () => randomBytes(32).toString('base64url');
 
 // argon2id with the OWASP-recommended minimum cost (19 MiB, 2 passes, 1 lane).
 const ARGON2 = { type: argon2.argon2id, memoryCost: 19456, timeCost: 2, parallelism: 1 } as const;
+/**
+ * Five failed sign-ins for one email in fifteen minutes lock that email for fifteen minutes, even
+ * against the right password, so a guess spread over many addresses is still slow. Unknown emails
+ * are counted the same way, so the lock does not reveal which accounts exist. The cost: someone
+ * can lock a known email out for a while, which is the standard trade for slowing guessing.
+ */
+const loginFailures = new FailureLimiter({
+  maxFailures: 5,
+  windowMs: 15 * 60_000,
+  lockMs: 15 * 60_000,
+});
+
+function assertNotLocked(email: string): void {
+  try {
+    loginFailures.assertAllowed(email);
+  } catch (e) {
+    if (e instanceof LockedOutError) {
+      throw tooManyRequests(
+        e.retryAfterSeconds,
+        'Too many failed sign-ins for this account. Try again later.',
+      );
+    }
+    throw e;
+  }
+}
+
 export const hashPassword = (password: string): Promise<string> => argon2.hash(password, ARGON2);
 // A hash of a throwaway value: verified when the email is unknown so both failures cost the same.
 const DUMMY_HASH = await argon2.hash(randomUUID(), ARGON2);
@@ -78,6 +112,7 @@ export class AuthService {
   }
 
   async login(input: Login): Promise<TokenPair> {
+    assertNotLocked(input.email);
     const [user] = await this.db
       .select()
       .from(users)
@@ -86,7 +121,11 @@ export class AuthService {
     const ok = await argon2
       .verify(user?.passwordHash ?? DUMMY_HASH, input.password)
       .catch(() => false);
-    if (!user || !ok) throw unauthorized('Email or password is incorrect');
+    if (!user || !ok) {
+      loginFailures.recordFailure(input.email);
+      throw unauthorized('Email or password is incorrect');
+    }
+    loginFailures.reset(input.email);
     return this.issue(user, randomUUID());
   }
 
