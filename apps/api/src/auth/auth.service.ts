@@ -129,6 +129,16 @@ export class AuthService {
     return this.issue(user, randomUUID());
   }
 
+  /** Sign in someone the identity provider vouches for (single sign-on); they must already have an active account. */
+  async loginWithVerifiedEmail(email: string): Promise<TokenPair> {
+    const [user] = await this.db
+      .select()
+      .from(users)
+      .where(and(eq(users.email, email), isNull(users.deletedAt)));
+    if (!user) throw unauthorized('There is no account for this identity');
+    return this.issue(user, randomUUID());
+  }
+
   async refresh(presented: string): Promise<TokenPair> {
     const hash = sha256(presented);
     const outcome = await this.db.transaction(async (tx): Promise<TokenPair | 'reuse'> => {
