@@ -3,6 +3,8 @@ import { ZodValidationPipe } from '@martronics/kit';
 import { CurrentUser, Public, Roles, type Principal } from '../common/auth.js';
 import {
   idParamsSchema,
+  backchannelLogoutSchema,
+  type BackchannelLogout,
   oidcExchangeSchema,
   type OidcExchange,
   listUsersQuerySchema,
@@ -47,6 +49,17 @@ export class AuthController {
     return this.auth.register(body);
   }
 
+  /** The identity provider's back-channel logout: a signed token (form encoded) saying a person signed out or was disabled there. */
+  @Public()
+  @Post('auth/backchannel-logout')
+  @HttpCode(200)
+  async backchannelLogout(
+    @Body(new ZodValidationPipe(backchannelLogoutSchema)) body: BackchannelLogout,
+  ) {
+    await this.oidc.handleBackchannelLogout(body.logout_token);
+    return {};
+  }
+
   @Public()
   @Post('auth/login')
   @HttpCode(200)
@@ -83,8 +96,11 @@ export class AuthController {
 
   @Roles('admin')
   @Get('users')
-  list(@Query(new ZodValidationPipe(listUsersQuerySchema)) query: ListUsersQuery) {
-    return this.auth.list(query);
+  list(
+    @CurrentUser() viewer: Principal,
+    @Query(new ZodValidationPipe(listUsersQuerySchema)) query: ListUsersQuery,
+  ) {
+    return this.auth.list(viewer, query);
   }
 
   @Roles('admin')

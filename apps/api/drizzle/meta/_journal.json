@@ -15,6 +15,13 @@
       "when": 1792242956492,
       "tag": "0001_audit_append_only",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792615947238,
+      "tag": "0002_sso_subject_and_platform_admin",
+      "breakpoints": true
     }
   ]
 }
